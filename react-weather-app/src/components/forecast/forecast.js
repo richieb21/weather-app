@@ -14,7 +14,7 @@ const Forecast = ({data}) => {
         <>
             <label className="title"> Daily </label>
             <Accordion allowZeroExpanded>
-                {data.list.splice(0,7).map((item, idx) => (
+                {data.list.slice(0,7).map((item, idx) => (
                     <AccordionItem key={idx}>
                         <AccordionItemHeading>
                             <AccordionItemButton>
@@ -24,6 +24,7 @@ const Forecast = ({data}) => {
                                     <label className="desc">{item.weather[0].description}</label>
                                     <label className="min-max">
                                         {Math.round(item.main.temp_min)}°C / 
+                                    </label><label className="min-max">
                                         {Math.round(item.main.temp_max)}°C
                                     </label>
                                 </div>
@@ -58,7 +59,7 @@ const Forecast = ({data}) => {
 
                                 <div className="daily-details-grid-item">
                                     <label>Feels Like</label>
-                                    <label>{Math.round(item.main.feels_like)}m</label>
+                                    <label>{Math.round(item.main.feels_like)}°C</label>
                                 </div>
                             </div>
                         </AccordionItemPanel>
